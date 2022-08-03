@@ -15,6 +15,19 @@
         </collection>
     </resultMap>
 
+    <resultMap id="OaProduct" type="com.xqf.test.entity.OaProduct">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="code" jdbcType="VARCHAR" property="code"/>
+        <result column="point" jdbcType="INTEGER" property="point"/>
+        <result column="market_price" jdbcType="DOUBLE" property="marketPrice"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="image" jdbcType="VARCHAR" property="image"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="status" jdbcType="BOOLEAN" property="status"/>
+        <result column="type" jdbcType="INTEGER" property="type"/>
+    </resultMap>
+
     <select id="getUser" resultMap="BaseResultMap">
 
     </select>
@@ -23,5 +36,8 @@
 
     </select>
 
+    <select id="test" resultMap="OaProduct" resultType="string">
+        select * from oa_product a where a.name like '%'#{name,jdbcType=VARCHAR}'%'
+    </select>
 
 </mapper>
