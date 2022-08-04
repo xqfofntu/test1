@@ -32,6 +32,6 @@ public class OaController extends BaseController{
             @ApiImplicitParam(name = "name", value = "商品名", required = true, dataType = "String", paramType = "query")
     })
     public R test(String name, Integer pageNum, Integer pageSize) {
-        return R.ok(getDataTable(oaService.test(name,pageNum,pageSize)));
+        return R.ok(getDataTable2(oaService.test(name,pageNum,pageSize),pageNum,pageSize));
     }
 }
