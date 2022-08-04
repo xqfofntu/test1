@@ -20,4 +20,13 @@ public interface IOaService {
      * @return
      */
     List<OaProduct> test(String name, Integer pageNum, Integer pageSize);
+
+    /**
+     * 测试
+     * @param name
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    List<OaProduct> useLimit(String name, Integer pageNum, Integer pageSize);
 }

@@ -5,6 +5,7 @@ import com.xqf.test.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author xuqifeng
@@ -24,4 +25,11 @@ public interface UserMapper {
      * @return
      */
     List<OaProduct> test(String name);
+
+    /**
+     * ff
+     * @param map
+     * @return
+     */
+    List<OaProduct> useLimit(Map<String,Object> map);
 }

@@ -36,12 +36,20 @@
 
     </select>
 
-    <select id="test" resultMap="OaProduct" resultType="string">
+    <select id="test" resultMap="OaProduct" parameterType="java.lang.String">
         select * from oa_product a where 1=1
         <if test="name != null">
             and a.name like concat('%', #{name}, '%')
         </if>
 
+    </select>
+
+    <select id="useLimit" resultType="com.xqf.test.entity.OaProduct" parameterType="java.util.Map">
+        select * from oa_product a where 1=1
+        <if test="name != null">
+            and a.name like concat('%',#{name},'%')
+        </if>
+        limit #{pageNum},#{pageSize}
     </select>
 
 </mapper>

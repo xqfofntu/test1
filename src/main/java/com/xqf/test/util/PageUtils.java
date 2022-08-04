@@ -32,7 +32,10 @@ public class PageUtils extends PageHelper
         pageNum = StringUtils.isNotNull(pageNum) ? pageNum : 1;
         pageSize = StringUtils.isNotNull(pageSize) ? pageSize : 10;
         String orderBy = SqlUtil.escapeOrderBySql("");
+        //分页页码不变，总是limit 10
         PageHelper.startPage(pageNum, pageSize, orderBy).setReasonable(true);
+        //分页成功
+//        PageHelper.startPage(pageNum, pageSize);
     }
     /**
      * 清理分页的线程变量
