@@ -4,8 +4,8 @@ import com.github.pagehelper.PageHelper;
 import com.xqf.test.entity.OaProduct;
 import com.xqf.test.mapper.UserMapper;
 import com.xqf.test.service.IOaService;
-import com.xqf.test.util.PageUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.data.redis.core.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,9 +20,11 @@ import java.util.Map;
 public class OaServiceImpl implements IOaService{
 
     private final UserMapper userMapper;
+    private final RedisTemplate redisTemplate;
 
-    public OaServiceImpl(UserMapper userMapper) {
+    public OaServiceImpl(UserMapper userMapper, RedisTemplate redisTemplate) {
         this.userMapper = userMapper;
+        this.redisTemplate = redisTemplate;
     }
 
     @Override
@@ -40,4 +42,20 @@ public class OaServiceImpl implements IOaService{
         map.put("pageSize", pageSize);
         return userMapper.useLimit(map);
     }
+
+    @Override
+    public Map<String, String> redisTest(String name) {
+        List<OaProduct> test = userMapper.test(name);
+        test.forEach(item -> {
+            redisTemplate.opsForValue().set(item.getName(),item.getContent());
+        });
+        Map<String, String> map = new HashMap<>();
+        test.forEach(item -> {
+            map.put(item.getName(), item.getContent());
+            System.out.println(redisTemplate.opsForValue().get(item.getName()));
+        });
+        return map;
+    }
+
+
 }

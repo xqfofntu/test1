@@ -47,4 +47,13 @@ public class OaController extends BaseController{
     public R useLimit(String name, Integer pageNum, Integer pageSize) {
         return R.ok(getDataTable2(oaService.useLimit(name,pageNum,pageSize),pageNum,pageSize));
     }
+
+    @PostMapping("/redisTest")
+    @ApiOperation(value="useLimit", notes="useLimit")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "name", value = "商品名", required = true, dataType = "String", paramType = "query")
+    })
+    public R redisTest(String name) {
+        return R.ok(oaService.redisTest(name));
+    }
 }

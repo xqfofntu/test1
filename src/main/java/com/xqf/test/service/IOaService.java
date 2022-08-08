@@ -4,6 +4,7 @@ import com.xqf.test.entity.OaProduct;
 import com.xqf.test.util.R;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author xuqifeng
@@ -29,4 +30,11 @@ public interface IOaService {
      * @return
      */
     List<OaProduct> useLimit(String name, Integer pageNum, Integer pageSize);
+
+    /**
+     * ddd
+     * @param name
+     * @return
+     */
+    Map<String, String> redisTest(String name);
 }
