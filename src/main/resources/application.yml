@@ -61,6 +61,9 @@ spring:
         min-idle: 0
       # 关闭超时时间
       shutdown-timeout: 100
+  elasticsearch:
+    rest:
+      uris: 192.168.8.34:9200
 
 # mybatis配置
 mybatis:
